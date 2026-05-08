@@ -1,1 +1,71 @@
-Test
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>System Update</title>
+</head>
+<body style="background-color: black; color: #00ff00; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden;">
+
+    <div id="terminal" style="width: 80%; max-width: 600px;">
+        <h1 style="font-size: 1.5rem; border-bottom: 1px solid #00ff00; padding-bottom: 10px;">KRITISCHER SYSTEMFEHLER</h1>
+        <p id="log-text">Initialisiere Festplatten-Bereinigung...</p>
+        
+        <!-- Progress Bar Container -->
+        <div style="width: 100%; border: 1px solid #00ff00; height: 30px; margin-top: 20px; position: relative;">
+            <div id="progress-bar" style="background-color: #00ff00; width: 0%; height: 100%; transition: width 0.1s linear;"></div>
+        </div>
+        
+        <p id="status" style="margin-top: 10px;">Status: 0% abgeschlossen</p>
+    </div>
+
+    <script>
+        const logText = document.getElementById('log-text');
+        const progressBar = document.getElementById('progress-bar');
+        const statusText = document.getElementById('status');
+        const terminal = document.getElementById('terminal');
+
+        const messages = [
+            "Lade Boot-Sektor...",
+            "Greife auf C:/Windows/System32 zu...",
+            "Lösche Benutzerdateien...",
+            "Formatiere Sektor 0x8823...",
+            "Überschreibe Lehrer-Notizen...",
+            "Sende Daten an den Kiosk-Server...",
+            "Fast fertig..."
+        ];
+
+        let progress = 0;
+        let messageIndex = 0;
+
+        function updateSimulation() {
+            if (progress < 100) {
+                // Fortschritt erhöhen
+                progress += Math.random() * 2;
+                if (progress > 100) progress = 100;
+                
+                progressBar.style.width = progress + "%";
+                statusText.innerText = "Status: " + Math.floor(progress) + "% abgeschlossen";
+
+                // Textnachrichten zufällig ändern
+                if (Math.random() > 0.95 && messageIndex < messages.length) {
+                    logText.innerText = messages[messageIndex];
+                    messageIndex++;
+                }
+
+                setTimeout(updateSimulation, 100);
+            } else {
+                // Der "Auflösung" des Pranks
+                terminal.innerHTML = `
+                    <h1 style="color: white; font-size: 3rem; text-align: center;">REINGELEGT! 😜</h1>
+                    <p style="color: white; text-align: center; font-size: 1.2rem;">Keine Sorge, Herr Lehrer. <br> Alles nur lokales JavaScript und CSS.</p>
+                    <button onclick="location.reload()" style="background: none; border: 1px solid white; color: white; padding: 10px 20px; cursor: pointer; display: block; margin: 20px auto;">Nochmal?</button>
+                `;
+                document.body.style.backgroundColor = "#ff4444"; // Hintergrund wird rot für den Schock-Effekt
+            }
+        }
+
+        // Startet die Simulation nach 1 Sekunde
+        setTimeout(updateSimulation, 1000);
+    </script>
+</body>
+</html>
