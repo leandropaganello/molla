@@ -2,20 +2,27 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>System Update</title>
+    <title>System Critical - Herr Molla</title>
 </head>
 <body style="background-color: black; color: #00ff00; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden;">
 
-    <div id="terminal" style="width: 80%; max-width: 600px;">
-        <h1 style="font-size: 1.5rem; border-bottom: 1px solid #00ff00; padding-bottom: 10px;">KRITISCHER SYSTEMFEHLER</h1>
-        <p id="log-text">Initialisiere Festplatten-Bereinigung...</p>
+    <div id="terminal" style="width: 80%; max-width: 600px; text-align: center;">
+        <h1 style="font-size: 1.5rem; border-bottom: 1px solid #00ff00; padding-bottom: 10px; text-transform: uppercase;">Remote Zugriff: Target_Molla</h1>
         
-        <!-- Progress Bar Container -->
-        <div style="width: 100%; border: 1px solid #00ff00; height: 30px; margin-top: 20px; position: relative;">
-            <div id="progress-bar" style="background-color: #00ff00; width: 0%; height: 100%; transition: width 0.1s linear;"></div>
+        <!-- Platzhalter für das Bild -->
+        <div id="image-container" style="margin: 20px auto; width: 150px; height: 150px; border: 2px solid #00ff00; display: flex; align-items: center; justify-content: center; background-color: #111;">
+            <!-- Ersetze 'dein-bild.jpg' durch den echten Dateinamen, falls vorhanden -->
+            <img src="molla.jpg" alt="User Profile" style="max-width: 100%; max-height: 100%; filter: grayscale(1) contrast(1.5) brightness(0.8);">
+        </div>
+
+        <p id="log-text" style="height: 1.2em;">Initialisiere Exploit...</p>
+        
+        <!-- Progress Bar -->
+        <div style="width: 100%; border: 1px solid #00ff00; height: 25px; margin-top: 10px; position: relative; overflow: hidden;">
+            <div id="progress-bar" style="background-color: #00ff00; width: 0%; height: 100%; transition: width 0.15s ease-out;"></div>
         </div>
         
-        <p id="status" style="margin-top: 10px;">Status: 0% abgeschlossen</p>
+        <p id="status" style="margin-top: 10px; font-size: 0.9rem;">Hacke Herr Mollas Admin-Passwort: 0%</p>
     </div>
 
     <script>
@@ -25,13 +32,13 @@
         const terminal = document.getElementById('terminal');
 
         const messages = [
-            "Lade Boot-Sektor...",
-            "Greife auf C:/Windows/System32 zu...",
-            "Lösche Benutzerdateien...",
-            "Formatiere Sektor 0x8823...",
-            "Überschreibe Lehrer-Notizen...",
-            "Sende Daten an den Kiosk-Server...",
-            "Fast fertig..."
+            "Umgehe Informatik-Fachraum-Firewall...",
+            "Verschlüssele Herr Mollas Klausur-Ordner...",
+            "Sende Noten-Update an das Schulportal...",
+            "Aktiviere Webcam-Übertragung (Scherz)...",
+            "Lösche 'Molla_Backup_2024'...",
+            "Infiltriere Java-Runtime-Environment...",
+            "Erstelle permanenten Root-Zugang..."
         ];
 
         let progress = 0;
@@ -39,33 +46,37 @@
 
         function updateSimulation() {
             if (progress < 100) {
-                // Fortschritt erhöhen
-                progress += Math.random() * 2;
+                // Zufälliger Fortschritt
+                progress += Math.random() * 3;
                 if (progress > 100) progress = 100;
                 
                 progressBar.style.width = progress + "%";
-                statusText.innerText = "Status: " + Math.floor(progress) + "% abgeschlossen";
+                statusText.innerText = "Fortschritt: " + Math.floor(progress) + "%";
 
-                // Textnachrichten zufällig ändern
-                if (Math.random() > 0.95 && messageIndex < messages.length) {
+                // Nachrichten-Wechsel
+                if (Math.random() > 0.92 && messageIndex < messages.length) {
                     logText.innerText = messages[messageIndex];
                     messageIndex++;
                 }
 
-                setTimeout(updateSimulation, 100);
+                setTimeout(updateSimulation, 120);
             } else {
-                // Der "Auflösung" des Pranks
+                // Das Finale
+                document.body.style.backgroundColor = "#003366"; // Wechselt zu Blau (wie ein Bluescreen)
                 terminal.innerHTML = `
-                    <h1 style="color: white; font-size: 3rem; text-align: center;">REINGELEGT! 😜</h1>
-                    <p style="color: white; text-align: center; font-size: 1.2rem;">Keine Sorge, Herr Lehrer. <br> Alles nur lokales JavaScript und CSS.</p>
-                    <button onclick="location.reload()" style="background: none; border: 1px solid white; color: white; padding: 10px 20px; cursor: pointer; display: block; margin: 20px auto;">Nochmal?</button>
+                    <div style="padding: 20px; border: 4px solid white; background-color: rgba(0,0,0,0.5);">
+                        <h1 style="color: #fff; font-size: 3rem; margin-bottom: 10px;">Alles gelöscht!</h1>
+                        <h2 style="color: #00ff00; margin-bottom: 20px;">Viel Spaß, Herr Molla!</h2>
+                        <p style="color: white; font-size: 1.2rem;">Das war nur ein kleiner Test meiner JavaScript-Skills.</p>
+                        <div style="font-size: 4rem; margin: 20px;">😜</div>
+                        <button onclick="location.reload()" style="background: white; border: none; color: #003366; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 5px;">Zurück zum Unterricht</button>
+                    </div>
                 `;
-                document.body.style.backgroundColor = "#ff4444"; // Hintergrund wird rot für den Schock-Effekt
             }
         }
 
-        // Startet die Simulation nach 1 Sekunde
-        setTimeout(updateSimulation, 1000);
+        // Start nach kurzer Verzögerung
+        setTimeout(updateSimulation, 1500);
     </script>
 </body>
 </html>
